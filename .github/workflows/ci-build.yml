@@ -1,0 +1,28 @@
+name: ci-build
+on:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '*.*'
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: publish-docker
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: manikmagar/muleflowdiagrams
+          push: false
+      - name: Test Docker image
+        run: |
+          docker version --format '{{.Server.Version}}'
+          docker run --rm javastreets/muleflowdiagrams --version
+          
