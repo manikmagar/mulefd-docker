@@ -8,21 +8,19 @@ on:
   pull_request:
     branches:
       - master
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: 'manikmagar/muleflowdiagrams'
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: publish-docker
+    name: build-test-docker
     steps:
       - uses: actions/checkout@v1
-      - name: Build docker image
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-          repository: manikmagar/muleflowdiagrams
-          push: false
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME
       - name: Test Docker image
         run: |
           docker version --format '{{.Server.Version}}'
-          docker run --rm javastreets/muleflowdiagrams --version
-          
+          docker run --rm $IMAGE_NAME --version
+

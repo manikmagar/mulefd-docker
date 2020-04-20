@@ -2,7 +2,7 @@ name: publish-docker
 on:
   push:
     tags:
-      - '[12].[0-9]+.[0-9]+*'
+      - '[012].[0-9]+.[0-9]+*'
 jobs:
   build:
     runs-on: ubuntu-latest
