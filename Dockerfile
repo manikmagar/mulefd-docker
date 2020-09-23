@@ -1,6 +1,6 @@
 FROM adoptopenjdk/openjdk8:jdk8u242-b08-ubuntu
 
-RUN curl -Ls "https://github.com/manikmagar/mule-flow-diagrams/releases/download/v0.4.1/muleflowdiagrams-0.4.1.zip" --output muleflowdiagrams.zip \
-              && jar xf muleflowdiagrams.zip && mv muleflowdiagrams-* muleflowdiagrams && chmod +x muleflowdiagrams/bin/muleflowdiagrams
+RUN curl -Ls "https://github.com/manikmagar/mulefd/releases/download/v0.5.0/mulefd-0.5.0.zip" --output mulefd.zip \
+              && jar xf mulefd.zip && mv mulefd-* mulefd && chmod +x mulefd/bin/mulefd
 
-ENTRYPOINT ["/muleflowdiagrams/bin/muleflowdiagrams"]
+ENTRYPOINT ["/mulefd/bin/mulefd"]
