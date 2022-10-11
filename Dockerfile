@@ -1,4 +1,4 @@
-# Generated with JReleaser 1.2.0 at 2022-10-11T00:23:54.376526383Z
+# Generated with JReleaser 1.2.0 at 2022-10-11T01:42:31.85878807Z
 FROM adoptopenjdk/openjdk8:jdk8u242-b08-ubuntu
 
 LABEL "org.opencontainers.image.title"="mulefd"
